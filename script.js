@@ -62,9 +62,6 @@ videos.forEach((video, index) => {
         <svg class="sound-on" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 9v6h4l5 4V5L9 9H5Z"/><path d="M17 9a4 4 0 0 1 0 6"/><path d="M19 6a8 8 0 0 1 0 12"/></svg>
         <svg class="sound-off" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 9v6h4l5 4V5L9 9H5Z"/><path d="m18 9 4 4m0-4-4 4"/></svg>
       </button>
-      <button class="player-button player-fullscreen" type="button" aria-label="Πλήρης οθόνη">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 4H4v4M16 4h4v4M20 16v4h-4M4 16v4h4"/></svg>
-      </button>
     </div>
   `);
 
@@ -73,7 +70,6 @@ videos.forEach((video, index) => {
   const progress = player.querySelector('.player-progress');
   const time = player.querySelector('.player-time');
   const sound = player.querySelector('.player-sound');
-  const fullscreen = player.querySelector('.player-fullscreen');
 
   const togglePlayback = () => video.paused ? video.play() : video.pause();
 
@@ -115,16 +111,6 @@ videos.forEach((video, index) => {
     video.muted = !video.muted;
     player.classList.toggle('is-muted', video.muted);
     sound.setAttribute('aria-label', video.muted ? 'Ενεργοποίηση ήχου' : 'Σίγαση');
-  });
-
-  fullscreen.addEventListener('click', async () => {
-    if (document.fullscreenElement) {
-      await document.exitFullscreen();
-    } else if (player.requestFullscreen) {
-      await player.requestFullscreen();
-    } else if (video.webkitEnterFullscreen) {
-      video.webkitEnterFullscreen();
-    }
   });
 });
 
