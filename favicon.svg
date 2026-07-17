@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-label="Κίτρινο ρολό βαφής με μπλε λαβή">
+  <defs>
+    <linearGradient id="rollerYellow" x1="0" x2="1">
+      <stop offset="0" stop-color="#ffd400"/>
+      <stop offset="1" stop-color="#ffb800"/>
+    </linearGradient>
+  </defs>
+  <g transform="translate(-185.4 -22.9) scale(.98)">
+    <rect x="230" y="106" width="260" height="78" rx="28" fill="url(#rollerYellow)"/>
+    <path d="M492 145h78c31 0 54 24 54 54v40" fill="none" stroke="#172630" stroke-width="22" stroke-linecap="round"/>
+    <path d="M624 235v98" fill="none" stroke="#172630" stroke-width="22" stroke-linecap="round"/>
+    <rect x="598" y="312" width="52" height="154" rx="25" fill="#167fc4"/>
+  </g>
+</svg>
