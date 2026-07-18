@@ -20,10 +20,18 @@ img, video, svg { display: block; max-width: 100%; }
 a { color: inherit; }
 button, input { font: inherit; }
 
+.review-bar { position: fixed; z-index: 110; top: 0; right: 0; left: 0; min-height: 42px; padding: .55rem 5vw; display: flex; align-items: center; justify-content: center; gap: .75rem; color: #fff; background: var(--blue-deep); font-size: .78rem; font-weight: 600; text-align: center; text-decoration: none; transition: background-color .2s ease; }
+.review-bar-stars { color: var(--yellow); letter-spacing: .08em; }
+.review-bar strong { color: var(--yellow); font-weight: 800; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+.review-bar svg { width: 18px; height: 18px; flex: 0 0 auto; fill: none; stroke: var(--yellow); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; transition: transform .2s ease; }
+.review-bar:hover { background: #06486a; }
+.review-bar:hover svg { transform: translateX(4px); }
+.review-bar:focus-visible { outline: 3px solid var(--yellow); outline-offset: -3px; }
+
 .topbar {
   position: fixed;
   z-index: 100;
-  top: 0;
+  top: 42px;
   left: 0;
   right: 0;
   min-height: 78px;
@@ -65,7 +73,7 @@ button, input { font: inherit; }
 .hero {
   position: relative;
   min-height: 100svh;
-  padding: 126px 5vw 88px;
+  padding: 168px 5vw 88px;
   display: grid;
   align-items: center;
   isolation: isolate;
@@ -227,6 +235,19 @@ body.loaded .profile-card { animation: cardReveal .8s .72s ease forwards; }
 .big-phone small { font-size: .7rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
 .big-phone strong { font-size: clamp(1.8rem, 4vw, 3rem); line-height: 1.05; letter-spacing: -.05em; }
 
+.review-section { position: relative; padding: clamp(3.5rem, 6vw, 5.5rem) 5vw; color: #fff; background: var(--blue-deep); overflow: hidden; }
+.review-section::before { content: "★"; position: absolute; top: 50%; right: 2vw; color: rgba(255,255,255,.045); font-size: clamp(13rem, 26vw, 28rem); line-height: 1; transform: translateY(-50%) rotate(10deg); }
+.review-inner { position: relative; z-index: 1; width: min(1220px, 100%); margin: 0 auto; display: grid; grid-template-columns: auto minmax(280px, 1fr) auto; align-items: center; gap: clamp(1.8rem, 4vw, 4rem); }
+.review-stars { display: flex; gap: .22rem; color: var(--yellow); font-size: clamp(1.1rem, 2vw, 1.45rem); letter-spacing: .02em; white-space: nowrap; }
+.review-copy .kicker { margin-bottom: .55rem; color: var(--yellow); }
+.review-copy h2 { margin: 0; font-family: "GFS Neohellenic", "Manrope", sans-serif; font-size: clamp(2.3rem, 4vw, 4.1rem); line-height: 1; letter-spacing: -.015em; }
+.review-copy > p:last-child { margin: .7rem 0 0; color: #c7d9e2; font-size: .88rem; line-height: 1.6; }
+.review-button { min-height: 62px; padding: .95rem 1.25rem .95rem 1.5rem; display: inline-flex; align-items: center; justify-content: center; gap: 1rem; color: var(--ink); background: var(--yellow); border-radius: 999px; box-shadow: 0 16px 35px rgba(0,0,0,.2); font-size: .88rem; font-weight: 800; text-decoration: none; white-space: nowrap; transition: transform .2s ease, background-color .2s ease, box-shadow .2s ease; }
+.review-button svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; transition: transform .2s ease; }
+.review-button:hover { background: #ffe052; box-shadow: 0 19px 40px rgba(0,0,0,.27); transform: translateY(-3px); }
+.review-button:hover svg { transform: translateX(4px); }
+.review-button:focus-visible { outline: 3px solid #fff; outline-offset: 4px; }
+
 footer { padding: 3rem 5vw; display: grid; grid-template-columns: 1fr auto; gap: 2.2rem; color: #fff; background: var(--ink); }
 .footer-brand { display: grid; }
 .footer-brand strong { font-size: 1.15rem; }
@@ -261,7 +282,7 @@ footer { padding: 3rem 5vw; display: grid; grid-template-columns: 1fr auto; gap:
 @keyframes scrollLine { to { top: 100%; } }
 
 @media (max-width: 1020px) {
-  .hero { min-height: auto; padding-top: 130px; }
+  .hero { min-height: auto; padding-top: 172px; }
   .hero-inner { grid-template-columns: 1fr 310px; gap: 2.5rem; }
   .hero h1 { font-size: clamp(3.4rem, 8vw, 5.6rem); }
   .paint-animation { right: -20%; width: 82vw; opacity: .48; }
@@ -275,7 +296,10 @@ footer { padding: 3rem 5vw; display: grid; grid-template-columns: 1fr auto; gap:
 }
 
 @media (max-width: 760px) {
-  .topbar { min-height: 68px; padding: 0 1rem; }
+  .review-bar { min-height: 38px; padding: .48rem .75rem; gap: .5rem; font-size: .67rem; }
+  .review-bar-stars { display: none; }
+  .review-bar svg { width: 16px; height: 16px; }
+  .topbar { top: 38px; min-height: 68px; padding: 0 1rem; }
   .brand-mark { width: 47px; height: 39px; }
   .brand strong { font-size: .82rem; }
   .brand small { font-size: .58rem; }
@@ -294,7 +318,7 @@ footer { padding: 3rem 5vw; display: grid; grid-template-columns: 1fr auto; gap:
   .menu-open .menu-toggle span:nth-child(2) { opacity: 0; }
   .menu-open .menu-toggle span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-  .hero { min-height: 100svh; padding: 105px 1.15rem 75px; align-items: start; }
+  .hero { min-height: 100svh; padding: 143px 1.15rem 75px; align-items: start; }
   .hero-inner { grid-template-columns: 1fr; gap: 2.3rem; }
   .hero-copy { text-align: center; }
   .eyebrow { display: block; font-size: .58rem; line-height: 1.45; }
@@ -337,6 +361,10 @@ footer { padding: 3rem 5vw; display: grid; grid-template-columns: 1fr auto; gap:
   .contact-section { min-height: 590px; padding: 5rem 1.15rem; }
   .contact-inner h2 { font-size: clamp(3rem, 14vw, 4.8rem); }
   .contact-actions { flex-direction: column; }
+  .review-section { padding: 4rem 1.15rem; text-align: center; }
+  .review-inner { grid-template-columns: 1fr; justify-items: center; gap: 1.5rem; }
+  .review-copy > p:last-child { max-width: 430px; }
+  .review-button { width: min(100%, 340px); white-space: normal; }
   footer { padding: 3rem 1.15rem 6.5rem; grid-template-columns: 1fr; }
   .social-links { align-items: flex-start; flex-direction: column; gap: .9rem; }
   .mobile-call { position: fixed; z-index: 90; right: 18px; bottom: 18px; width: 62px; height: 62px; display: grid; place-items: center; color: #fff; background: var(--blue); border: 4px solid #fff; border-radius: 50%; box-shadow: 0 12px 30px rgba(7,87,127,.34); text-decoration: none; }
